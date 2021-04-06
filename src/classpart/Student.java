@@ -14,9 +14,15 @@ package classpart;
  클래스 이름은 대문자로
  클래스의 전체이름은 classpart.Student 로 
  클래스의 이름이 같아도 다른 패키지에 속해 있으면 연관이 없음
+ 클래스 파일 안에 여러 클래스 가 있을 수 있지만 public 클래스는 단 하나여야하고 public 클래스의 이름과 자바 파일 이름은 같아야한다
  classpart 패키지 아래 두 개의 클래스 파일을 만들었다
  패키지는 클래스 파일의 묶음으로
  소스코드를 계층구조로 관리할 수 있도록 한다
+ 
+ main 함수는 자바가상머신(JVM)이 프로그램을 시작하기 위해 호출하는 함수, 클래스 내부에 만들지만클래스의 메서드가 아니다
+ 아래처럼 클래스 내부에 main 함수를 만들면 이 클래스가 프로그램의 시작클래스가 됨
+ 이와 같이 클래스 내부에 main 함수를 호출해 테스트를 수행하면 모든 클래스가 main 함수를 포함 해야 하는데,
+ 그럴 필요 없이 따로 테스트용 클래스를 생성할 수 있다 
  */
 public class Student {
 	int studentID;
@@ -27,4 +33,24 @@ public class Student {
 	public void showStudentInfo() {
 		System.out.println(studentName + "," + address);
 	}
+	
+	
+	public String getStudentName( ) {
+		return studentName;
+	};
+	
+	public void setStudentName(String name) {
+		studentName = name;
+	}
+	
+	public static void main(String[] args) {
+		Student studentKim = new Student();
+		studentKim.studentName = "먼지";
+		
+		System.out.println(studentKim.studentName);
+		studentKim.setStudentName("먼지몬");
+		System.out.println(studentKim.studentName);
+		System.out.println(studentKim.getStudentName());
+	}
+	
 }

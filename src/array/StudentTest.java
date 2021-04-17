@@ -14,7 +14,7 @@ public class StudentTest {
 		candiSubjects.add(new Subject("python"));
 		candiSubjects.add(new Subject("javascript"));
 		
-		mong.addSubjects(candiSubjects);
+		mong.addSubjects(candiSubjects);  
 		
 		for(int i = 0; i < candiSubjects.size(); i ++) {
 			candiSubjects.get(i).setScore((int)(Math.random()*100));

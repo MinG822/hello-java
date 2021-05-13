@@ -19,16 +19,18 @@ class HistoryTest {
 		assertEquals(history.visit("Youtube"), 5);
 		assertEquals(history.visit("Netflix"), 5);
 
-		history.goBack();
-		assertEquals(history.goBack(), "Daum");
-		history.goBack();
-		assertEquals(history.goBack(), "Google");
-		assertEquals(history.goBack(), null);
+		history.back();
+		assertEquals(history.back(), "Daum");
+		assertEquals(history.go(-2), "Google");
+		assertEquals(history.back(), null);
 		
-		history.goForward();
-		history.goForward();
+		history.forward();
+		history.go(1);
 		assertEquals(history.visit("Tiving"), 4);
 		assertEquals(history.getCurrent(), "Tiving");
+		
+		assertEquals(history.go(-10), "Google");
+		assertEquals(history.go(10), "Tiving");
 		
 	}
 

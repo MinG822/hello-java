@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import collection.linkedlist.Log;
 
 public class History {
-	LinkedList<Log> logs = new LinkedList<Log>();
-	int cursor = 0;
-	final int MAX_SIZE = 5;
+	private LinkedList<Log> logs = new LinkedList<Log>();
+	private int cursor = 0;
+	final private int MAX_SIZE = 5;
 	
 	
 	public int visit(String website) {
@@ -32,7 +32,7 @@ public class History {
 	}
 	
 	
-	public String goForward() {
+	public String forward() {
 		if (cursor == 0) {
 			return null;
 		}
@@ -41,11 +41,22 @@ public class History {
 	}
 	
 	
-	public String goBack() {
-		if (cursor == MAX_SIZE - 1) {
+	public String back() {
+		if (cursor == logs.size() - 1) {
 			return null;
 		}
 		cursor ++;
+		return logs.get(cursor).path;
+	}
+	
+	public String go(int i) {
+		if (cursor - i < 0 ) {
+			cursor = 0;
+		} else if (cursor - i > logs.size() - 1) {
+			cursor = logs.size() - 1;
+		} else {
+			cursor -= i;
+		}
 		return logs.get(cursor).path;
 	}
 	
